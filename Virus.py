@@ -19,7 +19,6 @@ class SimpleVirus(object):
         else:
             return False
 
-    
     def reproduce(self, popDensity):
 
         patientProb = random.random()
@@ -29,6 +28,7 @@ class SimpleVirus(object):
         else:
             return None
                 
+                
 class SimplePatient(object):
 
     def __init__(self, viruses, maxPop):
@@ -36,12 +36,10 @@ class SimplePatient(object):
         self.viruses = viruses
         self.maxPop = maxPop
 
-
     def getTotalPop(self):
 
         totalPop = len(self.viruses)
         return totalPop
-
 
     def update(self):
 
