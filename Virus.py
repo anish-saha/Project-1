@@ -133,6 +133,7 @@ def initial(numVirus, maxPop, maxBirthProb, clearProb, timeStep):
     return updateVirNum
 
 start = input("Press any key to begin or (n) to end: ")
+
 if not start == 'n':
     runSimulation()
 else:
