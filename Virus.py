@@ -7,6 +7,7 @@ class SimpleVirus(object):
 
     def __init__(self, maxBirthProb, clearProb):
 
+
         self.maxBirthProb = maxBirthProb
         self.clearProb = clearProb
 
@@ -20,14 +21,13 @@ class SimpleVirus(object):
 
     
     def reproduce(self, popDensity):
-    
+
         patientProb = random.random()
         if patientProb < self.maxBirthProb * (1 - popDensity):
             offspring = SimpleVirus(self.maxBirthProb, self.clearProb)
             return offspring
         else:
             return None
- 
                 
 class SimplePatient(object):
 
@@ -36,10 +36,12 @@ class SimplePatient(object):
         self.viruses = viruses
         self.maxPop = maxPop
 
+
     def getTotalPop(self):
 
         totalPop = len(self.viruses)
         return totalPop
+
 
     def update(self):
 
@@ -50,7 +52,7 @@ class SimplePatient(object):
         numVirus = len(survived)
         popDensity = float(numVirus/self.maxPop)
         self.viruses = survived
-
+        
         offspringVir = []
         for virus in self.viruses:
             offspringVir.append(virus)
@@ -61,34 +63,61 @@ class SimplePatient(object):
         return self.getTotalPop()
 
                         
-def simulationWithoutDrug(numVirus, maxPop, maxBirthProb, clearProb, numTrial):
+def runSimulation():
 
-    final = None
-    timeStep = 30
+    try:
+        numVirus = int(input("Enter the number of viruses initially. Please choose a number greater than zero: \n"))
+        maxPop = int(input("Enter the max population in a patient's body. Please choose a number greater than the previous value: \n"))
+        maxBirthProb = float(input("Enter the probability the virus can reproduce. Please choose a number between 0 and 1: \n"))
+        clearProb = float(input("Enter the probability patient is cured: Please choose a number between 0 and 1: \n"))
+        numTrial = int(input("Enter the number of trials. More trials yield a more accurate graph. Number of trials: \n"))
 
-    for i in range(0, numTrial):
-        results = initial(numVirus, maxPop, maxBirthProb, clearProb, timeStep)
-        if final == None:
-            final = results
-        else:
-            for j in range(0, len(final)):
-                final[j] += results[j]
+        if numVirus <= 0:
+            print ("\n Incorrect input for first variable. Please try again. \n")
+            runSimulation()
+        if maxPop <= numVirus:
+            print ("\n Incorrect input for second variable. Please try again. \n")
+            runSimulation()
+        if maxBirthProb < 0 or maxBirthProb > 1:
+            print ("\n Incorrect input for third variable. Please try again. \n")
+            runSimulation()
+        if clearProb < 0 or clearProb > 1:
+            print ("\n Incorrect input for fourth variable. Please try again. \n")
+            runSimulation()
+        if numTrial <= 0:
+            print ("\n Incorrect input for fifth variable. Please try again. \n")
+            runSimulation()
+        
+        final = None
+        timeStep = 30
 
-    avg = []
-    for i in range(0, len(final)):
-        avg.append(float(final[i]/numTrial))
+        for i in range(0, numTrial):
+            results = initial(numVirus, maxPop, maxBirthProb, clearProb, timeStep)
+            if final == None:
+                final = results
+            else:
+                for j in range(0, len(final)):
+                    final[j] += results[j]
 
-    xaxis = []
-    for i in range(0, timeStep):
-        xaxis.append(i)
-    
-    plt.plot(xaxis, avg)
-    plt.title("Simulation Without Drug")
-    plt.xlabel("time steps")
-    plt.ylabel("number viruses")
-    plt.show()
+        avg = []
+        for i in range(0, len(final)):
+            avg.append(float(final[i]/numTrial))
 
-
+        xaxis = []
+        for i in range(0, timeStep):
+            xaxis.append(i)
+        
+        plt.plot(xaxis, avg)
+        plt.title("Simulation Without Drug")
+        plt.xlabel("units of time")
+        plt.ylabel("number viruses")
+        plt.show()
+        
+    except ValueError:
+        print ("\n Invalid input. Please try again. \n")
+        runSimulation()
+        
+        
 def initial(numVirus, maxPop, maxBirthProb, clearProb, timeStep):
     
     virList = []
@@ -103,5 +132,8 @@ def initial(numVirus, maxPop, maxBirthProb, clearProb, timeStep):
 
     return updateVirNum
 
-simulationWithoutDrug(10, 1000, 0.9, 0.1, 30)
-
+start = input("Press any key to begin or (n) to end: ")
+if not start == 'n':
+    runSimulation()
+else:
+    raise SystemExit
