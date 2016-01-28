@@ -67,7 +67,7 @@ def runSimulation():
         numVirus = int(input("Enter the number of viruses initially. Please choose a number greater than zero: \n"))
         maxPop = int(input("Enter the max population in a patient's body. Please choose a number greater than the previous value: \n"))
         maxBirthProb = float(input("Enter the probability the virus can reproduce. Please choose a number between 0 and 1: \n"))
-        clearProb = float(input("Enter the probability patient is cured: Please choose a number between 0 and 1: \n"))
+        clearProb = float(input("Enter the probability the virus will die: Please choose a number between 0 and 1: \n"))
         numTrial = int(input("Enter the number of trials. More trials yield a more accurate graph. Number of trials: \n"))
 
         if numVirus <= 0:
