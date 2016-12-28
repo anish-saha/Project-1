@@ -4,4 +4,5 @@ To try it out, simply run the program and input values as you see fit. I would r
 a large maximum population, a high reproduction rate, a low mortality rate, and a greater number of trials. However,
 feel free to tinker with these values and study the graphs as necessary.
 
-![Alt text](SampleVirus.png)
+![Alt text](SampleVirus.png =200x200)
+![Alt text](SampleVirus2.png =200x200)
