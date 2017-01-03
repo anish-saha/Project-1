@@ -8,5 +8,5 @@ free to tinker with these values and study the graphs as necessary. Use the comm
 
 Sample Simulations:
 
-![Alt text](SampleVirus.png)
-![Alt text](SampleVirus2.png)
+![Alt text](VirusSim1.png)
+![Alt text](VirusSim2.png)
