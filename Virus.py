@@ -70,22 +70,22 @@ def runSimulation():
         clearProb = float(input("Enter the probability the virus will die: Please choose a number between 0 and 1: \n"))
         numTrial = int(input("Enter the number of trials. More trials yield a more accurate graph. Number of trials: \n"))
 
-        if numVirus <= 0:
+        while numVirus <= 0:
             print ("\n Incorrect input for first variable. Please try again. \n")
-            runSimulation()
-        if maxPop <= numVirus:
+            numVirus = int(input("Enter the number of viruses initially. Please choose a number greater than zero: \n"))
+        while maxPop <= numVirus:
             print ("\n Incorrect input for second variable. Please try again. \n")
-            runSimulation()
-        if maxBirthProb < 0 or maxBirthProb > 1:
+            maxPop = int(input("Enter the max population in a patient's body. \n"))
+        while maxBirthProb < 0 or maxBirthProb > 1:
             print ("\n Incorrect input for third variable. Please try again. \n")
-            runSimulation()
-        if clearProb < 0 or clearProb > 1:
+            maxBirthProb = float(input("Enter the probability the virus can reproduce. Please choose a number between 0 and 1: \n"))
+        while clearProb < 0 or clearProb > 1:
             print ("\n Incorrect input for fourth variable. Please try again. \n")
-            runSimulation()
-        if numTrial <= 0:
+            clearProb = float(input("Enter the probability the virus will die: Please choose a number between 0 and 1: \n"))
+        while numTrial <= 0:
             print ("\n Incorrect input for fifth variable. Please try again. \n")
-            runSimulation()
-        
+            numTrial = int(input("Enter the number of trials. More trials yield a more accurate graph. Number of trials: \n"))
+
         final = None
         timeStep = 30
 
