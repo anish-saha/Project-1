@@ -64,27 +64,27 @@ class SimplePatient(object):
 def runSimulation():
 
     try:
-        numVirus = int(input("Enter the number of viruses initially. Please choose a number greater than zero: \n"))
-        maxPop = int(input("Enter the max population in a patient's body. Please choose a number greater than the previous value: \n"))
-        maxBirthProb = float(input("Enter the probability the virus can reproduce. Please choose a number between 0 and 1: \n"))
-        clearProb = float(input("Enter the probability the virus will die: Please choose a number between 0 and 1: \n"))
-        numTrial = int(input("Enter the number of trials. More trials yield a more accurate graph. Number of trials: \n"))
+        numVirus = int(input("Enter the number of viruses initially: [Choose a number greater than zero] \n"))
+        maxPop = int(input("Enter the max population in a patient's body: [Choose a number greater than the previous value] \n"))
+        maxBirthProb = float(input("Enter the probability the virus can reproduce: [Choose a number between 0 and 1] \n"))
+        clearProb = float(input("Enter the probability the virus will die: [Choose a number between 0 and 1] \n"))
+        numTrial = int(input("Enter the number of trials: [More trials yield a more accurate graph] \n"))
 
         while numVirus <= 0:
-            print ("\n Incorrect input for first variable. Please try again. \n")
-            numVirus = int(input("Enter the number of viruses initially. Please choose a number greater than zero: \n"))
+            print ("\n Incorrect input for initial viruses. Please try again. \n")
+            numVirus = int(input("Enter the number of viruses initially: [Choose a number greater than zero] \n"))
         while maxPop <= numVirus:
-            print ("\n Incorrect input for second variable. Please try again. \n")
-            maxPop = int(input("Enter the max population in a patient's body. \n"))
+            print ("\n Incorrect input for max population. Please try again. \n")
+            maxPop = int(input("Enter the max population in a patient's body: [Greater than initial population]  \n"))
         while maxBirthProb < 0 or maxBirthProb > 1:
-            print ("\n Incorrect input for third variable. Please try again. \n")
-            maxBirthProb = float(input("Enter the probability the virus can reproduce. Please choose a number between 0 and 1: \n"))
+            print ("\n Incorrect input for reproduction probability. Please try again. \n")
+            maxBirthProb = float(input("Enter the probability the virus can reproduce: [Choose a number between 0 and 1] \n"))
         while clearProb < 0 or clearProb > 1:
-            print ("\n Incorrect input for fourth variable. Please try again. \n")
+            print ("\n Incorrect input for death probability. Please try again. \n")
             clearProb = float(input("Enter the probability the virus will die: Please choose a number between 0 and 1: \n"))
         while numTrial <= 0:
-            print ("\n Incorrect input for fifth variable. Please try again. \n")
-            numTrial = int(input("Enter the number of trials. More trials yield a more accurate graph. Number of trials: \n"))
+            print ("\n Incorrect input for number of trials. Please try again. \n")
+            numTrial = int(input("Enter the number of trials: [More trials yield a more accurate graph] \n"))
 
         final = None
         timeStep = 30
@@ -106,7 +106,7 @@ def runSimulation():
             xaxis.append(i)
         
         plt.plot(xaxis, avg)
-        plt.title("Simulation Without Drug")
+        plt.title("Virus Population Simulation")
         plt.xlabel("units of time")
         plt.ylabel("number viruses")
         plt.show()
