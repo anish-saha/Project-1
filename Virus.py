@@ -26,9 +26,9 @@ class SimpleVirus(object):
             offspring = SimpleVirus(self.maxBirthProb, self.clearProb)
             return offspring
         else:
-            return None
-                
-                
+            return None  
+
+        
 class SimplePatient(object):
 
     def __init__(self, viruses, maxPop):
@@ -130,7 +130,7 @@ def initial(numVirus, maxPop, maxBirthProb, clearProb, timeStep):
 
     return updateVirNum
 
-start = input("Press any key to begin or (n) to end: ")
+start = input("Press any key to begin or -n- to end: ")
 
 if not start == 'n':
     runSimulation()
