@@ -2,6 +2,7 @@ import numpy
 import random
 import matplotlib.pyplot as plt
 
+# A Python program using numpy utilities to graph population growth simulation for viruses.
 
 class SimpleVirus(object):
 
@@ -60,7 +61,8 @@ class SimplePatient(object):
         self.viruses = offspringVir
         return self.getTotalPop()
 
-                        
+    
+# Main method of program                        
 def runSimulation():
 
     try:
